@@ -50,7 +50,7 @@ jobs:
     name: Build
     strategy:
       fail-fast: false
-      matrix: ${{ fromJson(needs.matrix.outputs.build_matrix) }}
+      matrix: ${{ fromJson(needs.matrix.outputs.build_matrix || '{"include": []}') }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
